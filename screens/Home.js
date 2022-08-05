@@ -5,25 +5,77 @@ import  { getTodaysWeather } from "../stores/citiesANDweathers/weatherActions";
 import { NFTCard, HomeHeader, FocusedStatusBar } from "../components";
 import { COLORS, citiesData } from "../constants";
 import { useFocusEffect } from "@react-navigation/native";
+import * as Notifications from "expo-notifications";
+import * as Permissions from   "expo-permissions";
 
 
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => {
+    return {
+      shouldShowAlert: true,
+    }
+  },
+})
 
-const Home = ({getTodaysWeather, todaysWeather}) => {
+
+const Home = ({getTodaysWeather, todaysWeather, likedCities}) => {
   const ITEM_SIZE = 460
   const [CitiesData, setCitiesData] = useState(citiesData);
   const scrollY = React.useRef(new Animated.Value(0)).current;
 
-  {/*
-  useEffect( () => {
-  }) */}
+  
+  useEffect(() => {
+    //Permission for ios
+    Permissions.getAsync(Permissions.NOTIFICATIONS).then(statusObj => {
+      //check if we already have permission
+      if (statusObj.status !== "granted") {
+        // If permission is not there, ask for the same
+        return Permissions.askAsync(Permissions.NOTIFICATIONS)
+      }
+      return statusObj
+    }).then(statusObj => {
+      //If permission is still not given throw an error
+      if (statusObj.status !== "granted") {
+        throw new Error("Permission not granted")
+      }
+    }).catch(err => {
+      return null
+    });
+
+    let favcities = ["NAIROBI","KAMPALA","KIGALI"];
+
+    if (likedCities > 0 ) {
+      likedCities.map((city)=> {
+        if (todaysWeather[city["name"]] !== undefined) {
+            triggerlocal(todaysWeather, city["name"])
+        }})
+    }else {
+      favcities.map((city) => {
+        if (todaysWeather[city] !== undefined) {
+        triggerlocal(todaysWeather, city)
+        }})
+    }
+  }, [todaysWeather]) 
+
+
   useFocusEffect(
     React.useCallback(() => {
       getTodaysWeather();
     },[])
   )
 
-  const handleSearch = (value) => {
+   const triggerlocal = (todaysWeather, name) => {
+     Notifications.scheduleNotificationAsync({
+      content: {
+         title: name,
+         body : todaysWeather[name]["text"],
+      },
+       trigger: { seconds:5}
+     })
+   } 
+
+   const handleSearch = (value) => {
     if (value.length === 0) {
       setCitiesData(citiesData);
     }
@@ -105,6 +157,7 @@ const Home = ({getTodaysWeather, todaysWeather}) => {
 function mapStateToProps(state){
   return {
     todaysWeather : state.weatherReducer.todaysWeather,  
+    likedCities :   state.likesReducer.likedCities
   }
 }
 

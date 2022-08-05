@@ -65,7 +65,7 @@ export function getTodaysWeather(){
                      cloud: "0.00",
                      wind:  "0.00",
                      sun:   "0.00",
-                     text:  " ",
+                     text:  " Didnt pull weather data for the city, refresh!",
                      icon:  "//cdn.weatherapi.com/weather/64x64/day/122.png",
                   };
               }

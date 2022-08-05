@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { View, Text,TouchableOpacity, SafeAreaView, Image, StatusBar, FlatList } from "react-native";
 
 import { COLORS, SIZES, assets, SHADOWS, FONTS } from "../constants";
-import { CircleButton, RectButton, SubInfo, DetailsDesc, DetailsBid, FocusedStatusBar } from "../components";
+import { CircleButton, SubInfo, DetailsDesc, DetailsBid, FocusedStatusBar } from "../components";
 import {weatherData} from "../constants";
 import Iconx from   "react-native-vector-icons/Ionicons";
 import Iconm from  "react-native-vector-icons/MaterialCommunityIcons";

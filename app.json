@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "nftAPP",
-    "slug": "nftAPP",
+    "name": "weatherAPP",
+    "icon": "./assets/icon.png",
+    "slug": "weatherapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -17,16 +17,23 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.topupmama.test",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package":"com.topupmama.test",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "useNextNotificationsApi": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "A waether tracking app for 20 cities",
+    "githubUrl": "https://github.com/myk4040okothogodo/WeatherApp"
   }
 }

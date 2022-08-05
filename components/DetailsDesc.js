@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text} from 'react-native';
-import { EthPrice, NFTTitle} from './SubInfo';
+import {NFTTitle} from './SubInfo';
 import { COLORS, SIZES, FONTS} from '../constants';
 import Iconx from    'react-native-vector-icons/Ionicons'; 
 import Iconm from 'react-native-vector-icons/MaterialCommunityIcons';

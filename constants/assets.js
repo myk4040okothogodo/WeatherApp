@@ -1,5 +1,4 @@
 import badge from "../assets/icons/badge.png";
-import eth from "../assets/icons/eth.png";
 import heart from "../assets/icons/heart.png";
 import left from "../assets/icons/left.png";
 import search from "../assets/icons/search.png";
@@ -29,9 +28,6 @@ import Gust  from "../assets/images/gust.webp";
 import Sunny from "../assets/images/sunny.jpg";
 import Rainy from "../assets/images/rainy.jpg";
 import Cloud from "../assets/images/cloud.webp";
-import person01 from "../assets/images/person01.jpeg";
-import person02 from "../assets/images/person02.png";
-import person03 from "../assets/images/person03.png";
 import person04 from "../assets/images/person04.png";
 
 export default {
@@ -40,7 +36,6 @@ export default {
   Gust,
   Rainy,
   badge,
-  eth,
   heart,
   left,
   search,
@@ -66,9 +61,6 @@ export default {
   Shanghai,
   Newyork,
   Tokyo,
-  person01,
-  person02,
-  person03,
   person04,
 };
 
