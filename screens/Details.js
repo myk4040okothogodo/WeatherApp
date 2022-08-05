@@ -48,10 +48,8 @@ const DetailsHeader = ({ data,liked, navigation }) => (
 );
 
 const Details = ({ route, navigation }) => {
-  const [liked, setLiked] = useState(false);
-  
 
-  const { data , thiscityWeather} = route.params;
+  const { data ,compliked, thiscityWeather} = route.params;
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -86,7 +84,7 @@ const Details = ({ route, navigation }) => {
         }}
         ListHeaderComponent={() => (
           <React.Fragment>
-            <DetailsHeader data={data} liked={liked} navigation={navigation} />
+            <DetailsHeader data={data} liked={compliked} navigation={navigation} />
             <SubInfo cityWeather={thiscityWeather} />
             <View style={{ padding: SIZES.font }}>
               <DetailsDesc data={data}  cityWeather={thiscityWeather} />

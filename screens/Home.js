@@ -72,7 +72,7 @@ const Home = ({getTodaysWeather, todaysWeather}) => {
                 inputRange  : opacityInputRange,
                 outputRange : [1,1,1,0]
               });
-            
+              console.log("data :", item.id)            
               return <NFTCard data={item} thiscityWeather={todaysWeather[item.name]} scale={scale} opacity={opacity} /> 
               
               }}
@@ -104,8 +104,7 @@ const Home = ({getTodaysWeather, todaysWeather}) => {
 
 function mapStateToProps(state){
   return {
-    todaysWeather : state.weatherReducer.todaysWeather,
-  
+    todaysWeather : state.weatherReducer.todaysWeather,  
   }
 }
 
